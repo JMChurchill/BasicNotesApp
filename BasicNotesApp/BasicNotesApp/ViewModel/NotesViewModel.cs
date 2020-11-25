@@ -13,6 +13,34 @@ namespace BasicNotesApp.ViewModel
     class NotesViewModel : BaseViewModel
     {
         public Command GetNotesCommand { get; }
+
+        private bool _isRefreshing = false;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set
+            {
+                _isRefreshing = value;
+                OnPropertyChanged(nameof(IsRefreshing));
+            }
+        }
+
+        public Command RefreshCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    IsRefreshing = true;
+
+                    //await RefreshData(); 
+                    await GetNotesAsync();
+
+
+                    IsRefreshing = false;
+                });
+            }
+        }
         public ObservableCollection<Note> Notes { get; }
         public NotesViewModel()
         {

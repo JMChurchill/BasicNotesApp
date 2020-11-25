@@ -1,9 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BasicNotesApp.MainPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodel="clr-namespace:BasicNotesApp.ViewModel"
+             x:Class="BasicNotesApp.MainPage"
+             Title="{Binding Title}">
 
-    <StackLayout>
+    <ContentPage.BindingContext>
+        <viewmodel:NotesViewModel/>
+    </ContentPage.BindingContext>
+    
+    
+    
+    <!--<StackLayout>
         <Frame BackgroundColor="LightSkyBlue" Padding="24" CornerRadius="0">
             <Label Text="Notes App" HorizontalTextAlignment="Start" TextColor="White" FontSize="36" FontAttributes="Bold"/>
         </Frame>
@@ -11,6 +19,54 @@
         <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
         <Label FontSize="16" Padding="30,24,30,0">
         </Label>
-    </StackLayout>
+    </StackLayout>-->
+
+    <Grid RowSpacing="0" ColumnSpacing="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ListView ItemsSource="{Binding Notes}"
+                  CachingStrategy="RecycleElement"
+                  HasUnevenRows="True"
+                  Grid.ColumnSpan="2">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid ColumnSpacing="10" Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="1"
+                                         VerticalOptions="Center">
+                                <Label Text="{Binding Title}"/>
+                                <Label Text="{Binding NoteNote}"/>
+                                <Label Text="Test"/>
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Load Notes"
+                Command="{Binding GetNotesCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="0"/>
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"/>
+
+    </Grid>
 
 </ContentPage>

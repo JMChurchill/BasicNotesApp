@@ -1,13 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
+using BasicNotesApp.Model;
 using BasicNotesApp.Services;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(WebDataService))]
 namespace BasicNotesApp.Services
 {
-    class WebDataService
+    public class WebDataService : IDataService
     {
+        HttpClient httpClient;
+        HttpClient Client => httpClient ?? (httpClient = new HttpClient());
+        public async Task<IEnumerable<Note>> GetNotesAsync()
+        {
+            var json = await Client.GetStringAsync("https://raw.githubusercontent.com/JMChurchill/BasicNotesApp/master/data.json");
+            var all = Note.FromJson(json);
+            return all;
+        }
     }
 }

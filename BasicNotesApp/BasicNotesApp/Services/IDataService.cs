@@ -1,10 +1,13 @@
-﻿using System;
+﻿using BasicNotesApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BasicNotesApp.Services
 {
-    interface IDataService
+    public interface IDataService
     {
+        Task<IEnumerable<Note>> GetNotesAsync();
     }
 }

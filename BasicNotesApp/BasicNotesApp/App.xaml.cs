@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using BasicNotesApp.View;
 using Xamarin.Forms.Xaml;
 
 namespace BasicNotesApp
@@ -10,7 +11,13 @@ namespace BasicNotesApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage())
+            {
+                BarBackgroundColor = (Color)Resources["Primary"],
+                BarTextColor = Color.White
+            };
+
+            //MainPage = new MainPage();
         }
 
         protected override void OnStart()

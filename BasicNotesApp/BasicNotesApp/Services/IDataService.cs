@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BasicNotesApp.Model
+namespace BasicNotesApp.Services
 {
-    public partial class Note
+    interface IDataService
     {
     }
 }

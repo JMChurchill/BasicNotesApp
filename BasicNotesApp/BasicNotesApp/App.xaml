@@ -9,6 +9,11 @@
             <Color x:Key="Accent">#00BCD4</Color>
 
         </ResourceDictionary>
-
+        <Style x:Key="ButtonOutline" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+            <Setter Property="BorderColor" Value="{StaticResource Primary}"/>
+            <Setter Property="BorderWidth" Value="1"/>
+        </Style>
     </Application.Resources>
 </Application>

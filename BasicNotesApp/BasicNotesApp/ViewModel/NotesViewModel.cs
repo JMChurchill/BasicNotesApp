@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BasicNotesApp.Model
+namespace BasicNotesApp.ViewModel
 {
-    public partial class Note
+    class NotesViewModel
     {
+
     }
 }

@@ -1,6 +1,37 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BasicNotesApp.View.DetailsPage">
+             x:Class="BasicNotesApp.View.DetailsPage"
+             Title="Note Entry">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Note Name" FontSize="Title"/>
+            <Editor Placeholder="Enter Your Note Name"
+                    Text="{Binding Name}"
+                    HeightRequest="100"/>
 
-</ContentView>
+
+            <Label Text="Note" FontSize="Title"/>
+            <Editor Placeholder="Enter Your note"
+                    Text="{Binding Text}"
+                    HeightRequest="100"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Button Text="Save"
+                        Clicked="OnSaveBtnClicked"/>
+                <Button Grid.Column="1" 
+                        Text="Delete"
+                        Clicked="OnDeleteBtnClicked"/>
+            </Grid>
+        </StackLayout>
+        
+        
+
+    </ContentPage.Content>
+</ContentPage>

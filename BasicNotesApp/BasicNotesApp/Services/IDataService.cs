@@ -8,6 +8,9 @@ namespace BasicNotesApp.Services
 {
     public interface IDataService
     {
-        Task<IEnumerable<Note>> GetNotesAsync();
+        //Task<IEnumerable<NoteItem>> GetNotesAsync();
+
+        Task<IEnumerable<NoteItem>> GetItemsAsync();
+
     }
 }

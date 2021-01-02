@@ -2,11 +2,14 @@
 using Xamarin.Forms;
 using BasicNotesApp.View;
 using Xamarin.Forms.Xaml;
+using BasicNotesApp.Services;
 
 namespace BasicNotesApp
 {
     public partial class App : Application
     {
+        static NoteItemDatabase database;
+
         public App()
         {
             InitializeComponent();
@@ -20,6 +23,17 @@ namespace BasicNotesApp
             //MainPage = new MainPage();
         }
 
+        public static NoteItemDatabase Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new NoteItemDatabase();
+                }
+                return database;
+            }
+        }
         protected override void OnStart()
         {
         }

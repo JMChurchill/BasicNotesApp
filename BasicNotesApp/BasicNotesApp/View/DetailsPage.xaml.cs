@@ -1,6 +1,4 @@
-﻿using BasicNotesApp.Model;
-using BasicNotesApp.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,17 +10,21 @@ using Xamarin.Forms.Xaml;
 namespace BasicNotesApp.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DetailsPage : ContentView
+    public partial class DetailsPage : ContentPage
     {
         public DetailsPage()
         {
             InitializeComponent();
         }
 
-        public DetailsPage(Note note)
+        private void OnSaveBtnClicked(object sender, EventArgs e)
         {
-            InitializeComponent();
-            BindingContext = new NoteDetailsViewModel(note);
+
+        }
+
+        private void OnDeleteBtnClicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -13,6 +13,7 @@ namespace BasicNotesApp.ViewModel
     class NotesViewModel : BaseViewModel
     {
         public Command GetNotesCommand { get; }
+        public Command NewNoteCommand { get; }
 
         private bool _isRefreshing = false;
         public bool IsRefreshing
@@ -41,12 +42,16 @@ namespace BasicNotesApp.ViewModel
                 });
             }
         }
-        public ObservableCollection<Note> Notes { get; }
+        public ObservableCollection<NoteItem> Notes { get; }
         public NotesViewModel()
         {
-            Notes = new ObservableCollection<Note>();
+            Notes = new ObservableCollection<NoteItem>();
             Title = "Notes App";
             GetNotesCommand = new Command(async () => await GetNotesAsync());
+            NewNoteCommand = new Command(async () => await NewNoteAsync());
+
+            //GetNotesCommand = new Command(async () => await App.Database.GetItemsAsync());
+
         }
 
         async Task GetNotesAsync()
@@ -57,7 +62,12 @@ namespace BasicNotesApp.ViewModel
             try
             {
                 IsBusy = true;
-                var notes = await DataService.GetNotesAsync();
+                //var notes = await DataService.GetItemsAsync();
+
+                //var notes = await App.Database.GetItemsAsync();
+                var notes = await App.Database.GetItemsAsync();
+
+
                 Notes.Clear();
                 foreach (var note in notes)
                 {
@@ -77,6 +87,10 @@ namespace BasicNotesApp.ViewModel
             }
         }
 
+        async Task NewNoteAsync()
+        {
+
+        }
 
     }
 }

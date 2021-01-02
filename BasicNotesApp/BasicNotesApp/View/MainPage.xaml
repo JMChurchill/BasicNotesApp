@@ -31,7 +31,8 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ListView ItemsSource="{Binding Notes}"
+        <ListView x:Name="listView"
+            ItemsSource="{Binding Notes}"
                   CachingStrategy="RecycleElement"
                   HasUnevenRows="True"
                   Grid.ColumnSpan="2"
@@ -63,7 +64,7 @@
                 Grid.Column="0"/>
 
         <Button Text="Add Note"
-                Command="{Binding GetNotesCommand}"
+                Clicked="NewNote"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"
                 Grid.Column="1"/>

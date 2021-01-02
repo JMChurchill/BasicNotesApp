@@ -12,7 +12,7 @@ namespace BasicNotesApp.ViewModel
 
         }
 
-        public NoteDetailsViewModel(Note note) : this()
+        public NoteDetailsViewModel(NoteItem note) : this()
         {
 
         }

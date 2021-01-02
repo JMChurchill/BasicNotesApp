@@ -10,15 +10,15 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(WebDataService))]
 namespace BasicNotesApp.Services
 {
-    public class WebDataService : IDataService
+    public class WebDataService //: IDataService
     {
-        HttpClient httpClient;
-        HttpClient Client => httpClient ?? (httpClient = new HttpClient());
-        public async Task<IEnumerable<Note>> GetNotesAsync()
-        {
-            var json = await Client.GetStringAsync("https://raw.githubusercontent.com/JMChurchill/BasicNotesApp/master/data.json");
-            var all = Note.FromJson(json);
-            return all;
-        }
+        //HttpClient httpClient;
+        //HttpClient Client => httpClient ?? (httpClient = new HttpClient());
+        //public async Task<IEnumerable<NoteItem>> GetNotesAsync()
+        //{
+        //    var json = await Client.GetStringAsync("https://raw.githubusercontent.com/JMChurchill/BasicNotesApp/master/data.json");
+        //    var all = NoteItem.FromJson(json);
+        //    return all;
+        //}
     }
 }

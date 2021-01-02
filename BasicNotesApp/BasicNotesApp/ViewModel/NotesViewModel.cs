@@ -13,7 +13,7 @@ namespace BasicNotesApp.ViewModel
     class NotesViewModel : BaseViewModel
     {
         public Command GetNotesCommand { get; }
-        public Command NewNoteCommand { get; }
+        //public Command NewNoteCommand { get; }
 
         private bool _isRefreshing = false;
         public bool IsRefreshing
@@ -48,7 +48,7 @@ namespace BasicNotesApp.ViewModel
             Notes = new ObservableCollection<NoteItem>();
             Title = "Notes App";
             GetNotesCommand = new Command(async () => await GetNotesAsync());
-            NewNoteCommand = new Command(async () => await NewNoteAsync());
+            //NewNoteCommand = new Command(async () => await NewNoteAsync());
 
             //GetNotesCommand = new Command(async () => await App.Database.GetItemsAsync());
 
@@ -87,10 +87,10 @@ namespace BasicNotesApp.ViewModel
             }
         }
 
-        async Task NewNoteAsync()
-        {
+        //async Task NewNoteAsync()
+        //{
 
-        }
+        //}
 
     }
 }

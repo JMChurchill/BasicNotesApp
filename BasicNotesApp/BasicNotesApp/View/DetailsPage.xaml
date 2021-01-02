@@ -13,7 +13,7 @@
 
             <Label Text="Note" FontSize="Title"/>
             <Editor Placeholder="Enter Your note"
-                    Text="{Binding Text}"
+                    Text="{Binding Note}"
                     HeightRequest="100"/>
 
             <Grid>

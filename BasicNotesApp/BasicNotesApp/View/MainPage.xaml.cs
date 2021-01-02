@@ -30,19 +30,21 @@ namespace BasicNotesApp
 
         private async void NewNote(object sender, EventArgs e)
         {
-            //Page page = (Page)Activator.CreateInstance();
-
             await Navigation.PushAsync(new DetailsPage 
             { 
                 BindingContext = new NoteItem()
             });
         }
 
-        //protected override async void OnAppearing()
-        //{
-        //    base.OnAppearing();
-
-        //    listView.ItemsSource = await App.Database.GetItemsAsync();
-        //}
+        private async void listView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                await Navigation.PushAsync(new DetailsPage
+                {
+                    BindingContext = e.SelectedItem as NoteItem
+                });
+            }
+        }
     }
 }

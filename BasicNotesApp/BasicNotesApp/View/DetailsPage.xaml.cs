@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BasicNotesApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,14 +18,18 @@ namespace BasicNotesApp.View
             InitializeComponent();
         }
 
-        private void OnSaveBtnClicked(object sender, EventArgs e)
+        private async void OnSaveBtnClicked(object sender, EventArgs e)
         {
-
+            var noteItem = (NoteItem)BindingContext;
+            await App.Database.SaveItemAsync(noteItem);
+            await Navigation.PopAsync();
         }
 
-        private void OnDeleteBtnClicked(object sender, EventArgs e)
+        private async void OnDeleteBtnClicked(object sender, EventArgs e)
         {
-
+            var noteItem = (NoteItem)BindingContext;
+            await App.Database.DeleteItemAsync(noteItem);
+            await Navigation.PopAsync();
         }
     }
 }
